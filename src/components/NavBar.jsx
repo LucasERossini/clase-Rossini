@@ -1,12 +1,13 @@
 import React from "react";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
-import Computadora from "./Computadora";
+import CompuImage from "../images/computadora.png";
+
 
 function NavBar() {
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <Computadora />
+      <img src={CompuImage} style={{height: 50, marginRight: 10}} alt="Logo de Computación"/>
         <Navbar.Brand href="#home">Computación</Navbar.Brand>
         <Nav className="me-auto">
           <Nav.Link href="#home">Home</Nav.Link>
