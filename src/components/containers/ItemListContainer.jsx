@@ -9,7 +9,7 @@ function ItemListContainer({ greeting }) {
           <Col md="auto">
             <h1>{greeting}</h1>
           </Col>
-        </Row>
+        </Row>        
       </Container>
     </>
   );
