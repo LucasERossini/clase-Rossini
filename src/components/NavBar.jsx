@@ -5,7 +5,7 @@ import CartWidget from "./CartWidget";
 function NavBar() {
   return (
     <Navbar bg="dark" variant="dark">
-      <Container>
+      <Container >
         <img src="images/computadora.png" style={{height: 50, marginRight: 10}} alt="Logo de Computación"/>
         <Navbar.Brand href="#home">Computación</Navbar.Brand>
         <Nav className="me-auto">

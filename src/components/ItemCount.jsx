@@ -25,7 +25,7 @@ function ItemCount({ inicial, max, onAdd }) {
                     <button onClick={sumar}>+</button>
                 </Col>
                 <Col md="auto">
-                    <button onClick={() => reset()}>Reset</button>
+                    <button onClick={reset}>Reset</button>
                 </Col>
             </Row>
             <Row className="justify-content-md-center">
