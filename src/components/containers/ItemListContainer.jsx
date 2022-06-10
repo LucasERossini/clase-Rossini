@@ -41,7 +41,7 @@ function ItemListContainer({ greeting }) {
         <Row className="justify-content-md-center">
           <Col md="auto">
             {loading && "Loading..."}
-            <ItemList productos={productos}/>
+            {productos && <ItemList productos={productos}/>}
           </Col>
         </Row>
       </Container>

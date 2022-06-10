@@ -7,7 +7,7 @@ export default function ItemList({ productos }) {
         <>
             <Container>
                 <Row>
-                    {productos && productos.map((producto) => <Item key={producto.id} producto={producto} />)}
+                    {productos.map((producto) => <Item key={producto.id} producto={producto} />)}
                 </Row>
             </Container>
         </>
