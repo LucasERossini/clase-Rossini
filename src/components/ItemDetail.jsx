@@ -2,18 +2,18 @@ import React from 'react'
 import {Container, Row, Card, ListGroup, Col} from 'react-bootstrap';
 import ItemCount from './ItemCount';
 
-export default function ItemDetail({producto}) {
+export default function ItemDetail({productos}) {
     const onAdd = (count) => {
-        alert(`Agregaste ${count} pruducto/s al carrito`);
+        alert(`Agregaste ${count} producto/s al carrito`);
     };
 
-    const { title, detail, price , color , stock} = producto;
+    const { category, title, detail, price , color , stock} = productos;
     return (
         <> 
             <Container>
                 <Row>
                     <Card style={{ width: "22rem" }}>
-                        <Card.Img variant="top" src="/images/computadora.png" alt={`Imagen de ${title}`} />
+                        <Card.Img variant="top" src={`/images/${category}.png `} alt={`Imagen de ${title}`} style={{height: 280}}/>
                     </Card>
 
 

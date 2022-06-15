@@ -17,9 +17,9 @@ function NavBar() {
         <Nav className="me-auto">
           <Nav.Link href="#home">Home</Nav.Link>
           <Nav.Link href="#nosotros">Nosotros</Nav.Link>
-          <NavDropdown title="Productos" id="basic-nav-dropdown">
+          <NavDropdown title="Productos" id="basic-nav-dropdown" > 
             <NavDropdown.Item>
-              <Link to={"/category/mother"} style={{textDecoration: "none", color: "black"}}> Motherboards </Link>
+              <Link to={"/category/motherboard"} style={{textDecoration: "none", color: "black"}}> Motherboards </Link>
             </NavDropdown.Item>
             <NavDropdown.Item>
               <Link to={"/category/cpu"} style={{textDecoration: "none", color: "black"}}> Procesadores </Link>

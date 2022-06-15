@@ -1,7 +1,7 @@
 [
     {
         "id": "01",
-        "category": "mother",
+        "category": "motherboard",
         "title": "Motherboard 1",
         "description": "Buen mother",
         "detail": "Buena mother. Cumple con funciones básicas.",
@@ -12,7 +12,7 @@
     },
     {
         "id": "02",
-        "category": "mother",
+        "category": "motherboard",
         "title": "Motherboard 2",
         "description": "Gran mother",
         "detail": "Gran mother. Cumple con funciones básicas y extras.",
