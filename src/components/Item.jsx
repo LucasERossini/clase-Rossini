@@ -9,7 +9,8 @@ export default function Item({ producto }) {
             <Card style={{ width: "15rem" , marginRight: 18, marginBottom: 20}}>
                 <Card.Img variant="top" src={`/images/${category}.png `} alt={`Imagen de ${title}`} style={{height: 190}}/>
                 <Card.Body>
-                    <Card.Title>{title}: ${price}</Card.Title>
+                    <Card.Title>{title}</Card.Title>
+                    <Card.Title>${price}</Card.Title>
                     <Card.Text>
                         {description}
                     </Card.Text>

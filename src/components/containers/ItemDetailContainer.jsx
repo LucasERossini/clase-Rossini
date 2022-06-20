@@ -1,7 +1,7 @@
-import React, { useState , useEffect } from 'react'
-import { Row, Col, Container } from "react-bootstrap";
+import { useEffect, useState } from 'react';
+import { Col, Container, Row } from "react-bootstrap";
+import { useParams } from 'react-router-dom';
 import ItemDetail from '../ItemDetail';
-import {useParams} from 'react-router-dom';
 
 export default function ItemDetailContainer() {
     const [productos, setProductos] = useState(false);

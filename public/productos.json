@@ -1,6 +1,6 @@
 [
     {
-        "id": "01",
+        "id": "1",
         "category": "motherboard",
         "title": "Motherboard 1",
         "description": "Buen mother",
@@ -11,7 +11,7 @@
         "color": "negro"
     },
     {
-        "id": "02",
+        "id": "2",
         "category": "motherboard",
         "title": "Motherboard 2",
         "description": "Gran mother",
@@ -22,7 +22,7 @@
         "color": "gris oscuro"
     },
     {
-        "id": "03",
+        "id": "3",
         "category": "procesador",
         "title": "Procesador 1",
         "description": "Buen procesador",
@@ -33,7 +33,7 @@
         "color": "azul"
     },
     {
-        "id": "04",
+        "id": "4",
         "category": "procesador",
         "title": "Procesador 2",
         "description": "Gran procesador",
@@ -44,7 +44,7 @@
         "color": "blanco"
     },
     {
-        "id": "05",
+        "id": "5",
         "category": "fuente",
         "title": "Fuente 1",
         "description": "Buen fuente",
@@ -55,7 +55,7 @@
         "color": "negro"
     },
     {
-        "id": "06",
+        "id": "6",
         "category": "fuente",
         "title": "Fuente 2",
         "description": "Gran fuente",

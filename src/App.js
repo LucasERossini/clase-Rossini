@@ -5,7 +5,7 @@ import ItemListContainer from './components/containers/ItemListContainer';
 import NavBar from './components/NavBar';
 import ItemDetailContainer from './components/containers/ItemDetailContainer';
 
-function App() {
+export default function App() {
   
   return (
     <>
@@ -20,5 +20,3 @@ function App() {
     </>
   );
 }
-
-export default App;
