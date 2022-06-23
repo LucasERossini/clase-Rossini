@@ -1,17 +1,15 @@
-import { useState } from "react";
+//import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 
-function ItemCount({ inicial, max, onAdd}) {
-    const [count, setCount] = useState(inicial);
-
+export default function ItemCount({ cant, setCant, inicial, max, onAdd}) {
     const sumar = () => {
-        count < max ? setCount(count + 1) : alert('No podés agregar más productos, porque la cantidad es mayor al stock disponible');
+        cant < max ? setCant(cant + 1) : alert('No podés agregar más productos, porque la cantidad es mayor al stock disponible');
     };
     const restar = () => {
-        count > inicial ? setCount(count - 1) : alert('No podés sacar más productos');
+        cant > inicial ? setCant(cant - 1) : alert('No podés sacar más productos');
     };
     const reset = () => {
-        setCount(inicial);
+        setCant(inicial);
     };
 
     return (
@@ -21,7 +19,7 @@ function ItemCount({ inicial, max, onAdd}) {
                     <button onClick={restar}>-</button>
                 </Col>
                 <Col md="auto">
-                    <h2 className="justify-content-md-center">{count}</h2>
+                    <h2 className="justify-content-md-center">{cant}</h2>
                 </Col>
                 <Col md="auto">
                     <button onClick={sumar}>+</button>
@@ -32,11 +30,9 @@ function ItemCount({ inicial, max, onAdd}) {
             </Row>
             <Row className="justify-content-md-center">
                 <Col md="auto">
-                    <button onClick={() => onAdd(count)}>Agregar al Carrito</button>
+                    <button onClick={() => onAdd()}>Agregar al Carrito</button>
                 </Col>
             </Row>
         </Container>
     );
 };
-
-export default ItemCount;

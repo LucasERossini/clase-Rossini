@@ -1,9 +1,19 @@
-import React from "react";
-import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CartWidget from "./CartWidget";
 
-function NavBar() {
+export default function NavBar() {
+  const [navLinks, setNavLinks] = useState([]);
+
+  useEffect(() => {
+    fetch("/productos.json")
+      .then(res => res.json())
+      .then(parseArray => parseArray.map(x => x.category))
+      .then(uniqueArray => setNavLinks([...new Set(uniqueArray)]))
+
+  }, []);
+  
   return (
     <Navbar bg="dark" variant="dark">
       <Container >
@@ -14,17 +24,15 @@ function NavBar() {
           <Link to="/" style={{textDecoration: "none", color: "white"}}>Computación</Link>
         </Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link href="#nosotros">Nosotros</Nav.Link>
           <NavDropdown title="Productos" id="basic-nav-dropdown" >
-            <NavDropdown.Item as={Link} to="/category/motherboard"> Motherboards </NavDropdown.Item>
-            <NavDropdown.Item as={Link} to="/category/cpu"> Procesadores </NavDropdown.Item>
-            <NavDropdown.Item as={Link} to="/category/fuente"> Fuentes </NavDropdown.Item>
+            {navLinks.map((element, index) => {
+              return <NavDropdown.Item as={Link} to={`/category/${element}`} key={index}>{element}</NavDropdown.Item> 
+            })}
           </NavDropdown>
           <Nav.Link href="#contacto">Contacto</Nav.Link>
-          <CartWidget cantidad={4}/>
+          <CartWidget/>
         </Nav>
       </Container>
     </Navbar>
   );
-}
-export default NavBar;
+};

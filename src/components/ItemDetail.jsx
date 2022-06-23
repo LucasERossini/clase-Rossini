@@ -1,25 +1,30 @@
+import { useContext } from 'react';
 import { useState } from 'react';
 import { Card, Col, Container, ListGroup, Row } from 'react-bootstrap';
+import { CartContext } from '../context/CartContext';
 import ItemCount from './ItemCount';
 
 export default function ItemDetail({productos}) {
     const [cant, setCant] = useState(0);
-    console.log(cant)
 
-    const onAdd = (count) => {
-        setCant(count);
-        console.log(count);
-        alert(`Agregaste ${count} producto/s al carrito`);
+    const { id, title, detail, price , color , stock, pictureUrl } = productos;
+
+    const {isInCart, addItem} = useContext(CartContext);
+
+    const onAdd = () => {
+        if (cant > 0) {
+            isInCart(id);
+            addItem(productos, cant);
+            console.log(cant);
+        };
     };
-
-    const { category, title, detail, price , color , stock} = productos;
 
     return (
         <> 
             <Container>
                 <Row>
                     <Card style={{ width: "22rem" }}>
-                        <Card.Img variant="top" src={`/images/${category}.png `} alt={`Imagen de ${title}`} style={{height: 280}}/>
+                        <Card.Img variant="top" src={pictureUrl} alt={`Imagen de ${title}`} style={{height: 280}}/>
                     </Card>
                     <Card style={{ width: '18rem' }}>
                         <Card.Body>
@@ -38,12 +43,10 @@ export default function ItemDetail({productos}) {
                 <br />
                 <Row className="justify-content-md-center">
                     <Col md="auto">
-                        {cant ? <>Finalizar Compra</> : <ItemCount inicial={1} max={stock} onAdd={onAdd}/>}
+                        {<ItemCount cant={cant} setCant={setCant} inicial={0} max={stock} onAdd={onAdd}/>}
                     </Col>
                 </Row>
             </Container>
-
-            
         </>
     )
 }

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Row, Col, Container } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import ItemList from "../ItemList";
 
-function ItemListContainer({ greeting }) {
+export default function ItemListContainer({ greeting }) {
   const [productos, setProductos] = useState();
   const [loading, setLoading] = useState();
   const [categoria, setCategoria] = useState();
@@ -25,26 +25,8 @@ function ItemListContainer({ greeting }) {
     });
     getProducts
       .then((result) => {
-        if (id === 'motherboard') {
-          setProductos(
-            result.filter(producto => producto.category === 'motherboard')
-          );
-          setCategoria('Motherboards');
-        } else if (id === 'cpu') {
-          setProductos(
-            result.filter(producto => producto.category === 'procesador')
-          );
-          setCategoria('Procesadores');
-        } else if (id === 'fuente') {
-          setProductos(
-            result.filter(producto => producto.category === 'fuente')
-          );
-          setCategoria('Fuentes');
-        }
-        else {
-          setProductos(result);
-        }
-        
+        id ? setProductos(result.filter(producto => producto.category === id)) : setProductos(result);
+        id && setCategoria(id);
       })
       .catch((error) => {
         console.error("Error" ,error);
@@ -74,6 +56,4 @@ function ItemListContainer({ greeting }) {
       </Container>
     </>
   );
-}
-
-export default ItemListContainer;
+};
