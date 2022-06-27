@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-import Item from '../components/Item';
 
 export const CartContext = createContext();
 
@@ -23,14 +22,12 @@ export default function MyProvider({ children })  {
             if ((auxArray[productIndex].qty + qty) <= auxArray[productIndex].stock) {
                 auxArray[productIndex].qty += qty;
                 setCart(auxArray);
-                alert(`Agregaste ${qty} producto/s al carrito.`);
                 console.log(cart);
             } else {
                 alert("No hay stock suficiente.");
             };
         } else{
             setCart([...cart, newItem]);
-            alert(`Agregaste ${qty} producto/s al carrito.`);
             console.log(cart);
         };
     };
@@ -50,10 +47,10 @@ export default function MyProvider({ children })  {
         return cart.reduce((acc, item) => acc + item.qty, 0); // se va acumulando la cantidad de unidades de cada producto     
     };
     
-    // Método 'reduce' - CartWidget - Retorna el precio total del carrito.
+    // Método 'reduce' - Cart - Retorna el precio total del carrito.
     const getItemPrice = () => {
         return cart.reduce((acc, item) => acc += item.price * item.qty, 0);
     };
     
-    return <Provider value={{ cart, isInCart, addItem, emptyCart, deleteItem, getItemQty, getItemPrice }}>{children}</Provider>;
+    return <Provider value={{ cart, setCart, isInCart, addItem, emptyCart, deleteItem, getItemQty, getItemPrice }}>{children}</Provider>;
 };

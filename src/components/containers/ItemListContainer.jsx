@@ -3,7 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import ItemList from "../ItemList";
 
-export default function ItemListContainer({ greeting }) {
+export default function ItemListContainer() {
   const [productos, setProductos] = useState();
   const [loading, setLoading] = useState();
   const [categoria, setCategoria] = useState();
@@ -40,20 +40,21 @@ export default function ItemListContainer({ greeting }) {
 
   return (
     <>
-      <Container>
-        <Row className="justify-content-md-center">
-          <Col md="auto">
-            <h1>{greeting}</h1>
-            {categoria && <h2 style={{textAlign: "center"}}>{categoria}</h2>}
-          </Col>
-        </Row>
-        <Row className="justify-content-md-center">
-          <Col md="auto">
-            {loading && "Loading..."}
-            {productos && <ItemList productos={productos}/>}
-          </Col>
-        </Row>
-      </Container>
+      <div style={{marginTop: 30}}>
+        <Container>
+          <Row className="justify-content-md-center">
+            <Col md="auto">
+              {categoria && <h2 style={{textAlign: "center"}}>{categoria}</h2>}
+            </Col>
+          </Row>
+          <Row className="justify-content-md-center">
+            <Col md="auto">
+              {loading && "Loading..."}
+              {productos && <ItemList productos={productos}/>}
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </>
   );
 };

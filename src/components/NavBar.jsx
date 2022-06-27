@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
 import CartWidget from "./CartWidget";
 
 export default function NavBar() {
   const [navLinks, setNavLinks] = useState([]);
+
+  const { cart } = useContext(CartContext);
 
   useEffect(() => {
     fetch("/productos.json")
@@ -24,13 +27,12 @@ export default function NavBar() {
           <Link to="/" style={{textDecoration: "none", color: "white"}}>Computación</Link>
         </Navbar.Brand>
         <Nav className="me-auto">
-          <NavDropdown title="Productos" id="basic-nav-dropdown" >
+          <NavDropdown title="Categorías" id="basic-nav-dropdown" >
             {navLinks.map((element, index) => {
               return <NavDropdown.Item as={Link} to={`/category/${element}`} key={index}>{element}</NavDropdown.Item> 
             })}
           </NavDropdown>
-          <Nav.Link href="#contacto">Contacto</Nav.Link>
-          <CartWidget/>
+          {cart.length > 0 && <CartWidget/>}
         </Nav>
       </Container>
     </Navbar>
