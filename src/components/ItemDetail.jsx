@@ -5,18 +5,18 @@ import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import ItemCount from './ItemCount';
 
-export default function ItemDetail({ productos }) {
+export default function ItemDetail({ producto }) {
     const [cant, setCant] = useState(1);
     const [isAdded, setIsAdded] = useState(false);
 
-    const { id, title, detail, price, color, stock, pictureUrl } = productos;
+    const { id, title, detail, price, color, stock, pictureUrl } = producto;
 
     const { isInCart, addItem, deleteItem} = useContext(CartContext);
 
     const onAdd = () => {
         if (cant > 0) {
             isInCart(id);
-            addItem(productos, cant);
+            addItem(producto, cant);
             console.log(cant);
             setIsAdded(true);
         };

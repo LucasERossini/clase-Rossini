@@ -1,37 +1,34 @@
+// @ts-nocheck
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import ItemList from "../ItemList";
 
 export default function ItemListContainer() {
-  const [productos, setProductos] = useState();
+  const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState();
   const [categoria, setCategoria] = useState();
 
   const { id } = useParams();
 
   useEffect(() => {
-    setProductos([]);
     setLoading(true);
     setCategoria("");
 
-    const getProducts = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve( 
-          fetch("/productos.json")
-            .then(response => response.json())
-        );
-      }, 3000);
-    });
-    getProducts
-      .then((result) => {
-        id ? setProductos(result.filter(producto => producto.category === id)) : setProductos(result);
-        id && setCategoria(id);
+    const coleccion = 'items';
+    const db = getFirestore();
+    const coleccionProductos = collection(db, coleccion);
+
+    getDocs(coleccionProductos)
+    .then((res) => {
+      id ? setProductos(res.docs.map((doc) => ({id: doc.id, ...doc.data()})).filter(producto => producto.category === id)) : setProductos(res.docs.map((doc) => ({id: doc.id, ...doc.data()})));
+      id && setCategoria(id);
       })
-      .catch((error) => {
+    .catch((error) => {
         console.error("Error" ,error);
       })
-      .finally(() => {
+    .finally(() => {
         setLoading(false);
       });
   }, [id]);
