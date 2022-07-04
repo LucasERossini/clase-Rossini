@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { CartContext } from "../context/CartContext";
-import {Link} from 'react-router-dom';
 import { Badge } from "react-bootstrap";
+import { Link } from 'react-router-dom';
+import { CartContext } from "../context/CartContext";
 
 export default function CartWidget() {
 

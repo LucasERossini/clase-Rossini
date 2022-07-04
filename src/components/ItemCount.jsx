@@ -1,4 +1,3 @@
-//import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 
 export default function ItemCount({ cant, setCant, inicial, max, onAdd}) {

@@ -56,6 +56,11 @@ export default function Cart() {
                         <Card style={{ width: "26rem", textAlign: "center" }}>
                             <Card.Title style={{ fontSize: "30px" }}>
                                 Importe total a pagar: ${getItemPrice()}
+                                <Link to="/checkout">
+                                    <button className="btn btn-success">
+                                        Terminar Compra
+                                    </button>
+                                </Link>
                             </Card.Title>
                         </Card>
                     </Row>

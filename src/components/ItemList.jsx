@@ -1,6 +1,5 @@
-import React from 'react'
-import { Row, Container } from "react-bootstrap";
-import Item from './Item'
+import { Container, Row } from "react-bootstrap";
+import Item from './Item';
 
 export default function ItemList({ productos }) {
     return (

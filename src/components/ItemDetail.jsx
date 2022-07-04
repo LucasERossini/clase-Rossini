@@ -1,5 +1,4 @@
-import { useContext } from 'react';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Card, Col, Container, ListGroup, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
@@ -11,7 +10,7 @@ export default function ItemDetail({ producto }) {
 
     const { id, title, detail, price, color, stock, pictureUrl } = producto;
 
-    const { isInCart, addItem, deleteItem} = useContext(CartContext);
+    const { isInCart, addItem, deleteItem } = useContext(CartContext);
 
     const onAdd = () => {
         if (cant > 0) {

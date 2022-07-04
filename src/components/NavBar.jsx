@@ -7,7 +7,7 @@ import CartWidget from "./CartWidget";
 export default function NavBar() {
   const [navLinks, setNavLinks] = useState([]);
 
-  const { cart } = useContext(CartContext);
+  const { getItemQty } = useContext(CartContext);
 
   useEffect(() => {
     fetch("/productos.json")
@@ -32,7 +32,7 @@ export default function NavBar() {
               return <NavDropdown.Item as={Link} to={`/category/${element}`} key={index}>{element}</NavDropdown.Item> 
             })}
           </NavDropdown>
-          {cart.length > 0 && <CartWidget/>}
+          {getItemQty() > 0 && <CartWidget/>}
         </Nav>
       </Container>
     </Navbar>

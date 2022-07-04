@@ -7,6 +7,7 @@ import ItemDetailContainer from './components/containers/ItemDetailContainer';
 import ItemListContainer from './components/containers/ItemListContainer';
 import NavBar from './components/NavBar';
 import CartContext from './context/CartContext';
+import Checkout from './components/Checkout';
 import { initializeApp } from "firebase/app";
 
 export default function App() {
@@ -18,7 +19,7 @@ export default function App() {
     messagingSenderId: "471616600905",
     appId: "1:471616600905:web:be04798dbbc791bca03898"
   });
-  
+
   return (
     <>
       <CartContext>
@@ -29,6 +30,7 @@ export default function App() {
             <Route path="/category/:id" element={<ItemListContainer/>}/>
             <Route path="/item/:id" element={<ItemDetailContainer/>} />
             <Route path="/cart" element={<Cart/>}/>
+            <Route path="/checkout" element={<Checkout/>}/>
           </Routes>
         </BrowserRouter>
       </CartContext>      
