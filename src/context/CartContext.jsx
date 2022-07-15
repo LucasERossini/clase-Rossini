@@ -1,20 +1,25 @@
-import { createContext, useState } from "react";
+import { createContext, useRef, useState } from "react";
+import Swal from 'sweetalert2';
 
 export const CartContext = createContext();
 
 const { Provider } = CartContext;
 
 export default function MyProvider({ children }) {
-    const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart"))); // se inicializa con un array vacío
+    JSON.parse(localStorage.getItem("cart")) === null && localStorage.setItem("cart", "[]");
+
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")));
+
+    const noStock = useRef(false);
 
     // Método 'some' - ItemDetail - Se va a encargar de detectar si el producto a agregar ya está en el carrito o no. Retorna un booleano.
     const isInCart = (id) => {
-        cart === null && setCart([]);
         return cart.some(item => item.id === id);
     };
 
     // ItemDetail - Se va a encargar de agregar el producto al cart, sin pisar a los agregados anteriormente. Y si está duplicado, sólo aumenta la cantidad.
     const addItem = (item, qty) => {
+        noStock.current = false;
         const newItem = { ...item, qty }; // nuevo objeto con los atributos del producto más la cantidad
         if (isInCart(newItem.id)) {
             const findProduct = cart.find(item => item.id === newItem.id);
@@ -24,7 +29,19 @@ export default function MyProvider({ children }) {
                 auxArray[productIndex].qty += qty;
                 setCart(auxArray);
             } else {
-                alert("No hay stock suficiente.");
+                noStock.current = true;
+                Swal.fire({
+                    color: 'white',
+                    background: '#313447',
+                    title: 'Error',
+                    text: 'No hay stock suficiente',
+                    icon: 'error',
+                    iconColor: '#9b0000',
+                    showConfirmButton: false,
+                    showCancelButton: true,
+                    cancelButtonText: 'Volver',
+                    cancelButtonColor: '#9b0000'
+                });
             };
         } else {
             setCart([...cart, newItem]);
@@ -56,7 +73,7 @@ export default function MyProvider({ children }) {
     };
 
     const cartJSON = JSON.stringify(cart);
-    cart !== null  && localStorage.setItem("cart", cartJSON);
+    cart !== null && localStorage.setItem("cart", cartJSON);
 
-    return <Provider value={{ cart, setCart, isInCart, addItem, emptyCart, deleteItem, getItemQty, getItemPrice }}>{children}</Provider>;
+    return <Provider value={{ cart, noStock, setCart, isInCart, addItem, emptyCart, deleteItem, getItemQty, getItemPrice }}>{children}</Provider>;
 };

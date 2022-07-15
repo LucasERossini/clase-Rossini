@@ -1,9 +1,10 @@
 // @ts-nocheck
 import { collection, getDocs, getFirestore } from 'firebase/firestore';
 import { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 import ItemList from "../ItemList";
+import PlaceholderItem from '../PlaceholderItem';
 
 export default function ItemListContainer() {
   const [productos, setProductos] = useState([]);
@@ -21,33 +22,32 @@ export default function ItemListContainer() {
     const coleccionProductos = collection(db, coleccion);
 
     getDocs(coleccionProductos)
-    .then((res) => {
-      id ? setProductos(res.docs.map((doc) => ({id: doc.id, ...doc.data()})).filter(producto => producto.category === id)) : setProductos(res.docs.map((doc) => ({id: doc.id, ...doc.data()})));
-      id && setCategoria(id);
+      .then((res) => {
+        id ? setProductos(res.docs.map((doc) => ({ id: doc.id, ...doc.data() })).filter(producto => producto.category === id)) : setProductos(res.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+        id ? setCategoria(id) : setCategoria("Todos nuestros productos");
       })
-    .catch((error) => {
-        console.error("Error" ,error);
+      .catch((error) => {
+        console.error("Error", error);
       })
-    .finally(() => {
+      .finally(() => {
         setLoading(false);
       });
   }, [id]);
 
-  console.log(productos);
-
   return (
     <>
-      <div style={{marginTop: 30}}>
+      <div style={{ backgroundColor: "#5c6286", paddingTop: 90 , paddingBottom: 40 }}>
         <Container>
-          <Row className="justify-content-md-center">
+          <Row className="justify-content-center">
             <Col md="auto">
-              {categoria && <h2 style={{textAlign: "center"}}>{categoria}</h2>}
+              <h2 style={{ textAlign: "center", marginBottom: 20, color: "#eaedff" }}>{categoria}</h2>
             </Col>
           </Row>
-          <Row className="justify-content-md-center">
-            <Col md="auto">
-              {loading && "Loading..."}
-              {productos && <ItemList productos={productos}/>}
+          <Row className="justify-content-center">
+            <Col>
+              <Row className="justify-content-center">
+                {loading ? <PlaceholderItem/> : <ItemList productos={productos} />}
+              </Row>
             </Col>
           </Row>
         </Container>

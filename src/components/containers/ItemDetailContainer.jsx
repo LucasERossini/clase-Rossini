@@ -1,8 +1,9 @@
+import { collection, getDocs, getFirestore } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import ItemDetail from '../ItemDetail';
-import { collection, getDocs, getFirestore } from 'firebase/firestore';
+import PlaceholderItemDetail from '../PlaceholderItemDetail';
 
 export default function ItemDetailContainer() {
     const [producto, setProducto] = useState(false);
@@ -27,18 +28,15 @@ export default function ItemDetailContainer() {
             });
     }, [id]);
 
-    console.log(producto);
-
     return (
-        <>
+        <div style={{ backgroundColor: "#5c6286", paddingTop: 90, paddingBottom: 40 }}>
             <Container>
-                <Row className="justify-content-md-center">
-                    <Col md="auto">
-                        {loading && "Loading..."}
-                        {producto && <ItemDetail producto={producto} />}
+                <Row className="justify-content-center">
+                    <Col xs="auto">
+                        {loading ? <PlaceholderItemDetail/> : <ItemDetail producto={producto} />}
                     </Col>
                 </Row>
             </Container>
-        </>
+        </div>
     )
 }

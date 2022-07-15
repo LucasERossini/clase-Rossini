@@ -1,14 +1,17 @@
 //@ts-check
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { initializeApp } from "firebase/app";
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Cart from './components/Cart';
+import Checkout from './components/Checkout';
 import ItemDetailContainer from './components/containers/ItemDetailContainer';
 import ItemListContainer from './components/containers/ItemListContainer';
+import Footer from './components/Footer';
 import NavBar from './components/NavBar';
 import CartContext from './context/CartContext';
-import Checkout from './components/Checkout';
-import { initializeApp } from "firebase/app";
+import ScrollToTop from './wrappers/ScrollToTop';
 
 export default function App() {
   initializeApp({
@@ -21,19 +24,22 @@ export default function App() {
   });
 
   return (
-    <>
+    <div>
       <CartContext>
         <BrowserRouter>
-          <NavBar />
-          <Routes>
-            <Route path="/" element={<ItemListContainer/>}/>
-            <Route path="/category/:id" element={<ItemListContainer/>}/>
-            <Route path="/item/:id" element={<ItemDetailContainer/>} />
-            <Route path="/cart" element={<Cart/>}/>
-            <Route path="/checkout" element={<Checkout/>}/>
-          </Routes>
+          <ScrollToTop>
+            <NavBar />
+            <Routes>
+              <Route path="/" element={<ItemListContainer />} />
+              <Route path="/category/:id" element={<ItemListContainer />} />
+              <Route path="/item/:id" element={<ItemDetailContainer />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<Checkout />} />
+            </Routes>
+            <Footer />
+          </ScrollToTop>
         </BrowserRouter>
-      </CartContext>      
-    </>
+      </CartContext>
+    </div>
   );
 };
