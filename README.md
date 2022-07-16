@@ -2,9 +2,9 @@
 
 ## Descripción
 
-En eset repositorio se encuentra el proytecto final desarrollado para el curso de `React JS` de `Coderhouse`.
+En este repositorio se encuentra el proytecto final desarrollado para el curso de `React JS` de `Coderhouse`.
 
-La aplicación es un eCommerce en el cual se puede filtrar los productos de acuerdo a categorías y acceder a ver el detalle de cada producto. Los mismos pueden ser agregados al carrito para luego completar un formulario simulando un proceso de compra completo.
+La aplicación es un eCommerce en el cual se pueden filtrar los productos de acuerdo a categorías y acceder a ver el detalle de cada producto. Los mismos pueden ser agregados al carrito para luego completar un formulario simulando un proceso de compra completo.
 
 Tanto el listado de categorías, como los productos y las órdenes generadas se almacenan en `Firebase`.
 
