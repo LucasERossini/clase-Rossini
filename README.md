@@ -61,7 +61,7 @@ Una segunda colección, llamada `orders`, se creará automáticamente al generar
 ### React-Bootstrap
 Se escogió React-Bootstrap como librería de componentes para agilizar el proceso de desarrollo y estilado de la aplicación.
 ### Firebase
-En Firebase se almacenaron el listado de productos y las órdenes generadas.
+En Firebase se almacenaron el listado de productos y las órdenes generadas. También se lo utilizó para realzar el deploy de la app.
 ### SweetAlert2
 Se utilizó la librería SweetAlert2 para mejorar visualmente los algunos avisos dirijidos al usuario.
 ### Validator
