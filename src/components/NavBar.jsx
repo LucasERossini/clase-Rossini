@@ -1,14 +1,11 @@
 import { collection, getDocs, getFirestore } from 'firebase/firestore';
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { CartContext } from "../context/CartContext";
 import CartWidget from "./CartWidget";
 
 export default function NavBar() {
   const [navLinks, setNavLinks] = useState([]);
-
-  const { getItemQty } = useContext(CartContext);
 
   useEffect(() => {
     const coleccion = 'items';
@@ -30,7 +27,7 @@ export default function NavBar() {
           <Link to="/" style={{ textDecoration: "none", color: "white" , marginTop: 6}}>
             <img src="/images/computadora.png" style={{ height: 50, marginRight: 10 }} alt="Logo de Computación" />
             <Navbar.Brand style={{ marginLeft: 5}}>
-              <h5 style={{display: "inline", color: "#eaedff"}}>Computación</h5>
+              <h5 style={{display: "inline", color: "#eaedff"}}>CompuMarket</h5>
             </Navbar.Brand>
           </Link>
           <Navbar.Collapse id="basic-navbar-nav" >
@@ -40,7 +37,7 @@ export default function NavBar() {
               })}
             </Nav>
           </Navbar.Collapse>
-          {getItemQty() > 0 && <CartWidget />}
+          <CartWidget />
           <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         </Container>
       </Navbar>

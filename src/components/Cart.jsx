@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 
 export default function Cart() {
-    const { cart, deleteItem, getItemPrice, emptyCart } = useContext(CartContext);
+    const { cart, deleteItem, getItemPrice, getItemQty, emptyCart } = useContext(CartContext);
 
     let styles = { paddingTop: 10, textAlign: "center", fontSize: "16px", color: "white", verticalAlign: "middle" };
 
@@ -54,7 +54,7 @@ export default function Cart() {
                                         <tr key={item.id}>
                                             <td style={styles}>
                                                 <Link to={`/item/${item.id}`} style={{ textDecoration: "none", color: "white" }}>
-                                                <img src={item.pictureUrl} alt={`Imagen de ${item.title}`} style={{ height: 30 }} /> {item.qty} x {item.title}
+                                                    <img src={item.pictureUrl} alt={`Imagen de ${item.title}`} style={{ height: 30 }} /> {item.qty} x {item.title}
                                                 </Link>
                                             </td>
                                             <td style={styles}>${item.price}.-</td>
@@ -69,7 +69,12 @@ export default function Cart() {
                                 </tbody>
                             </Table>
                             <Row style={{ backgroundColor: "#313447", borderBottomRightRadius: 20, borderBottomLeftRadius: 20, margin: 0, paddingTop: 20, paddingBottom: 20 }} className="justify-content-center">
-                                <Col xs="auto" style={{ backgroundColor: "#5c6286", borderRadius: 20, padding: 20 }}>
+                                <Col xs="auto" style={{ backgroundColor: "#5c6286", borderRadius: 20, padding: 10 }}>
+                                    <Row className="justify-content-center">
+                                        <Col xs="auto" style={{ fontSize: "20px", color: "white"}}>
+                                            {getItemQty()} producto/s
+                                        </Col>
+                                    </Row>
                                     <Row className="justify-content-center">
                                         <Col xs="auto" style={{ fontSize: "23px", color: "white", marginBottom: 10 }}>
                                             Importe total a pagar: ${getItemPrice()}.-

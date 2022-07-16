@@ -12,7 +12,7 @@ export default function Footer() {
                 </Row>
                 <Row className="justify-content-center">
                     <Col xs="auto">
-                        <p style={{ color: "#eaedff" , fontSize: 30}}>Computación</p>
+                        <p style={{ color: "#eaedff" , fontSize: 30}}>CompuMarket</p>
                     </Col>
                 </Row>
                 <Row className="justify-content-center" style={{ borderTop: "1px solid #3c50c2" }}>

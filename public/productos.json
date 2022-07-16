@@ -7,7 +7,7 @@
         "detail": "Buena motherboard. Cumple con funciones básicas.",
         "price": 150,
         "pictureUrl": "/images/motherboard.png",
-        "stock": 10,
+        "stock": 100,
         "color": "negro"
     },
     {
@@ -18,7 +18,7 @@
         "detail": "Gran motherboard. Cumple con funciones básicas y extras.",
         "price": 250,
         "pictureUrl": "/images/motherboard.png",
-        "stock": 10,
+        "stock": 50,
         "color": "gris oscuro"
     },
     {
@@ -29,7 +29,7 @@
         "detail": "Buen procesador. Cumple con funciones básicas.",
         "price": 200,
         "pictureUrl": "/images/procesador.png",
-        "stock": 10,
+        "stock": 20,
         "color": "azul"
     },
     {
@@ -51,7 +51,7 @@
         "detail": "Buena fuente. Cumple con funciones básicas.",
         "price": 100,
         "pictureUrl": "/images/fuente.png",
-        "stock": 10,
+        "stock": 150,
         "color": "negro"
     },
     {
@@ -62,7 +62,7 @@
         "detail": "Gran fuente. Cumple con funciones básicas y extras.",
         "price": 200,
         "pictureUrl": "/images/fuente.png",
-        "stock": 10,
+        "stock": 100,
         "color": "blanco"
     }
 ]
